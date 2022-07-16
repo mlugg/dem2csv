@@ -90,7 +90,3 @@ pub fn main() anyerror!void {
 
     try convert(br.reader(), bw.writer());
 }
-
-test "basic test" {
-    try std.testing.expectEqual(10, 3 + 7);
-}
