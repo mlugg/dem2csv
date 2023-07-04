@@ -4,12 +4,12 @@ fn convertPacket(r: anytype, w: anytype, tick: i32) !void {
     var slot: u8 = 0;
     while (slot < 2) : (slot += 1) {
         try r.skipBytes(4, .{});
-        const x = @bitCast(f32, try r.readIntLittle(u32));
-        const y = @bitCast(f32, try r.readIntLittle(u32));
-        const z = @bitCast(f32, try r.readIntLittle(u32));
-        const pitch = @bitCast(f32, try r.readIntLittle(u32));
-        const yaw = @bitCast(f32, try r.readIntLittle(u32));
-        const roll = @bitCast(f32, try r.readIntLittle(u32));
+        const x: f32 = @bitCast(try r.readIntLittle(u32));
+        const y: f32 = @bitCast(try r.readIntLittle(u32));
+        const z: f32 = @bitCast(try r.readIntLittle(u32));
+        const pitch: f32 = @bitCast(try r.readIntLittle(u32));
+        const yaw: f32 = @bitCast(try r.readIntLittle(u32));
+        const roll: f32 = @bitCast(try r.readIntLittle(u32));
         try r.skipBytes(12 * 4, .{});
 
         if (tick > 0 and slot == 0) {
